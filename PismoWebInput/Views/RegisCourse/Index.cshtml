@@ -1,0 +1,84 @@
+﻿@using PismoWebInput.Core.Infrastructure.Domain.Entities
+@{
+    ViewData["Title"] = "Registered Course";
+    var listItemRegistered = ViewData["Registered"] as List<SubjectClass>;
+    var listItemUnregistered = ViewData["Unregistered"] as List<SubjectClass>;
+}
+
+<h2 style="margin-bottom: 40px">Registered Course</h2>
+<table class="table align-middle mb-0 bg-white table table-bordered border-primary">
+    <thead class="bg-light">
+        <tr class="text-center">
+            <th>SubjectClassID</th>
+            <th>CategoryID</th>
+            <th>CategoryName</th>
+            <th>AmountMoney</th>
+            <th>SubjectID</th>
+            <th>SubjectName</th>
+            <th>Lecturer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (listItemRegistered == null || listItemRegistered.Count == 0)
+        {
+            <tr>
+                <td colspan="8" class="text-center">There are no data</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in listItemRegistered)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CategoryId</td>
+                    <td>@item.Category.Name</td>*
+                    <td>@item.Category.AmountMoney</td>
+                    <td>@item.SubjectId</td>
+                    <td>@item.Subject.Name</td>
+                    <td>@item.Lecturer.Name</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+<p></p>
+<h2 style="margin-bottom: 40px">Unregistered Course</h2>
+<table class="table align-middle mb-0 bg-white table table-bordered border-primary">
+    <thead class="bg-light">
+        <tr class="text-center">
+            <th>SubjectClassID</th>
+            <th>CategoryID</th>
+            <th>CategoryName</th>
+            <th>AmountMoney</th>
+            <th>SubjectID</th>
+            <th>SubjectName</th>
+            <th>Lecturer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (listItemUnregistered == null || listItemUnregistered.Count == 0)
+        {
+            <tr>
+                <td colspan="8" class="text-center">There are no data</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in listItemUnregistered)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CategoryId</td>
+                    <td>@item.Category.Name</td>*
+                    <td>@item.Category.AmountMoney</td>
+                    <td>@item.SubjectId</td>
+                    <td>@item.Subject.Name</td>
+                    <td>@item.Lecturer.Name</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

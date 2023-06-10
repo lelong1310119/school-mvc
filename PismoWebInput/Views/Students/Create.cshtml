@@ -1,0 +1,75 @@
+﻿@using PismoWebInput.Core.Enums
+@using PismoWebInput.Core.Infrastructure.Extensions
+@using PismoWebInput.Core.Infrastructure.Models.StudentModel
+@model PismoWebInput.Core.Infrastructure.Models.StudentModel.StudentModel
+
+@{
+    ViewData["Title"] = "Student Manager - Create";
+}
+
+<section class="h-100 w-100">
+    <form method="POST" class="needs-validation h-100" novalidate="" autocomplete="off">
+        <div class="row justify-content-sm-center">
+            <div class="col-lg-6 mb-3">
+                <div class="card shadow-lg h-100">
+                    <div class="card-body p-5">
+                        <div class="mb-3">
+                            <label asp-for="StudentCode" class="mb-1 fw-bold"></label>
+                            <input asp-for="StudentCode" class="form-control" aria-required="true" required autofocus autocomplete="false">
+                            <span asp-validation-for="StudentCode" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Name" class="mb-1 fw-bold"></label>
+                            <input asp-for="Name" class="form-control" aria-required="true" required autofocus autocomplete="false">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="mb-1 fw-bold"></label>
+                            <input asp-for="Email" class="form-control" aria-required="true" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="mb-1 fw-bold"></label>
+                            <input asp-for="Phone" class="form-control" aria-required="true" required>
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Address" class="mb-1 fw-bold"></label>
+                            <input asp-for="Address" class="form-control" aria-required="true" required>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Gender" class="mb-1 fw-bold"></label>
+                            <input asp-for="Gender" class="form-control" aria-required="true" required>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Birthday" class="mb-1 fw-bold"></label>
+                            <input asp-for="Birthday" type="date" class="form-control" aria-required="true" required>
+                            <span asp-validation-for="Birthday" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            @Html.ValidationSummary(true)
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn btn-lg btn-secondary mx-3 d-flex flex-column align-items-center justify-content-center" asp-area="" asp-controller="Student" asp-action="Index" style="width: 85px">
+                                <i class="fa-solid fa-arrow-left"></i> Back
+                            </a>
+                            <button type="reset" class="btn btn-lg btn-warning mx-3 d-flex flex-column align-items-center justify-content-center text-white" style="width: 85px">
+                                <i class="fa-solid fa-rotate"></i>  Reset
+                            </button>
+                            <button type="submit" class="btn btn-lg btn-primary mx-3 d-flex flex-column align-items-center justify-content-center" style="width: 85px">
+                                <i class="fa-solid fa-save"></i>  Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

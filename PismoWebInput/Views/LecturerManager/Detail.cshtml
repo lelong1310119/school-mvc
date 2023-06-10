@@ -1,0 +1,47 @@
+﻿@model IList<PismoWebInput.Core.Infrastructure.Domain.Entities.RegisCourse>
+@{
+    ViewData["Title"] = "SubjectClass Detail";
+}
+
+<h2 style="margin-bottom: 40px">Detail SubjectClass</h2>
+<table class="table align-middle mb-0 bg-white table table-bordered border-primary">
+    <thead class="bg-light">
+        <tr class="text-center">
+            <th>StudentId</th>
+            <th>StudentCode</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Birthday</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || Model.Count == 0)
+        {
+            <tr>
+                <td colspan="8" class="text-center">There are no data</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Student.Id</td>
+                    <td>@item.Student.StudentCode</td>
+                    <td>@item.Student.Email</td>
+                    <td>@item.Student.Name</td>
+                    <td>@item.Student.Phone</td>
+                    <td>@item.Student.Address</td>
+                    <td>@item.Student.Gender</td>
+                    <td>@item.Student.Birthday</td>
+                    <td>@item.Score</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

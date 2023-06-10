@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PismoWebInput.Core.Enums
+@using PismoWebInput.Core.Infrastructure.Domain.Entities
+@using PismoWebInput.Core.Infrastructure.Extensions
+@inject SignInManager<AppUser> _signInManager
+@inject UserManager<AppUser> _userManager
+
+<style scoped>
+    .actions-container .feature-btn {
+        width: 180px;
+        height: 180px;
+    }
+
+        .actions-container .feature-btn i {
+            font-size: 90px;
+        }
+</style>
+
+@if (_signInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole(AppRoleEnum.Admin.ToString()))
+    {
+        <div class=" h-100 d-flex flex-column align-items-center justify-content-center">
+            <div class="d-flex justify-content-center flex-wrap align-items-center actions-container">
+                <a class="btn btn-outline-primary btn-lg m-4 d-flex flex-column align-items-center justify-content-around feature-btn" asp-area="" asp-controller="UserManager">
+                    <i class="fa-solid fa-users-gear"></i>
+                    User manager
+                </a>
+                <a class="btn btn-outline-primary btn-lg m-4 d-flex flex-column align-items-center justify-content-around feature-btn" asp-area="" asp-controller="Lecturer">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    Lecturer
+                </a>
+                <a class="btn btn-outline-primary btn-lg m-4 d-flex flex-column align-items-center justify-content-around feature-btn" asp-area="" asp-controller="Students">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Student
+                </a>
+            </div>
+        </div>
+    }
+}
+else
+{
+
+}
+

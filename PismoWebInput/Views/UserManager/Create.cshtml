@@ -1,0 +1,76 @@
+﻿@using PismoWebInput.Core.Enums
+@using PismoWebInput.Core.Infrastructure.Extensions
+@model PismoWebInput.Core.Infrastructure.Models.UserManager.CreateUserManagerModel
+
+@{
+    ViewData["Title"] = "User Manager - Create";
+    var roles = new List<string>
+            {
+                AppRoleEnum.Admin.ToString(),
+                AppRoleEnum.Staff.ToString(),
+            };
+            
+}
+
+<section class="h-100 w-100">
+    <form method="POST" class="needs-validation h-100" novalidate="" autocomplete="off">
+        <div class="row justify-content-sm-center h-100">
+            <div class="col-lg-6 mb-3">
+                <div class="card shadow-lg h-100">
+                    <div class="card-body p-5">
+                        <div class="mb-3">
+                            <label asp-for="User.Username" class="mb-1 fw-bold"></label>
+                            <input asp-for="User.Username" class="form-control" aria-required="true" required autofocus autocomplete="new-user">
+                            <span asp-validation-for="User.Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="User.Password" class="mb-1 fw-bold"></label>
+                            <input asp-for="User.Password" type="password" class="form-control" aria-required="true" required autocomplete="new-password">
+                            <span asp-validation-for="User.Password" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="User.ConfirmPassword" class="mb-1 fw-bold"></label>
+                            <input asp-for="User.ConfirmPassword" type="password" class="form-control" aria-required="true" required autocomplete="new-password">
+                            <span asp-validation-for="User.ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-5">
+                            <label asp-for="User.Role" class="mb-1 fw-bold">User level</label>
+                            <div class="d-flex flex-row justify-content-start align-items-center">
+                                @foreach (var role in roles)
+                                {
+                                    <div class="me-4">
+                                        <input id="@role" type="radio" name="User.Role" value="@role" checked="@(role == AppRoleEnum.Student.ToString())"/>
+                                        <label for="@role">@role</label>
+                                    </div>
+                                }
+                            </div>
+                            <span asp-validation-for="User.Role" class="text-danger"></span>
+                        </div>
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="mb-5 text-center">
+                                @Html.ValidationSummary(true);
+                            </div>
+                        }
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a type="button" class="btn btn-lg btn-secondary mx-3 d-flex flex-column align-items-center justify-content-center" asp-area="" asp-controller="UserManager" asp-action="Index" style="width: 85px">
+                                <i class="fa-solid fa-arrow-left"></i>  Back
+                            </a>
+                            <button type="reset" class="btn btn-lg btn-dark-blue mx-3 d-flex flex-column align-items-center justify-content-center text-white" style="width: 85px">
+                                <i class="fa-solid fa-rotate"></i>  Reset
+                            </button>
+                            <button type="submit" class="btn btn-lg btn-primary mx-3 d-flex flex-column align-items-center justify-content-center" style="width: 85px">
+                                <i class="fa-solid fa-save"></i>  Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

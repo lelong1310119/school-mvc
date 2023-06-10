@@ -1,0 +1,50 @@
+﻿@model IList<PismoWebInput.Core.Infrastructure.Domain.Entities.SubjectClass>
+@{
+    ViewData["Title"] = "Lecturer";
+}
+<h2 style="margin-bottom: 40px">Manager SubjectClass</h2>
+<table class="table align-middle mb-0 bg-white table table-bordered border-primary">
+    <thead class="bg-light">
+        <tr class="text-center">
+            <th>SubjectClassID</th>
+            <th>CategoryID</th>
+            <th>CategoryName</th>
+            <th>AmountMoney</th>
+            <th>SubjectID</th>
+            <th>SubjectName</th>
+            <th>SemesterID</th>
+            <th>SemesterName</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null || Model.Count == 0)
+        {
+            <tr>
+                <td colspan="9" class="text-center">There are no data</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.CategoryId</td>
+                    <td>@item.Category.Name</td>
+                    <td>@item.Category.AmountMoney</td>
+                    <td>@item.SubjectId</td>
+                    <td>@item.Subject.Name</td>
+                    <td>@item.SemesterId</td>
+                    <td>@item.Semester.Name</td>
+                    <td>
+                        <a type="button" class="btn btn-lg btn-primary w-100" asp-area="" asp-controller="LecturerManager" asp-action="Detail" asp-route-id="@item.Id" style="width: 85px">
+                            <i class="fa-solid fa-edit"></i>Detail
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
